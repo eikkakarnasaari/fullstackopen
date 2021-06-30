@@ -16,6 +16,7 @@ app.listen(PORT, () => {
 // Middleware
 app.use(express.json());
 app.use(cors());
+app.use(express.static('../frontend/build'));
 
 morgan.token('body', (req) => {
   return JSON.stringify(req.body);
