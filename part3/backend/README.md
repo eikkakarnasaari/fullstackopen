@@ -1,1 +1,1 @@
-https://calm-escarpment-45387.herokuapp.com/
+https://fs21-puhelinluettelo.herokuapp.com/
