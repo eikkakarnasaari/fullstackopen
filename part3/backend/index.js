@@ -16,25 +16,14 @@ app.listen(PORT, () => {
 // Middleware
 app.use(express.json());
 app.use(cors());
-app.use(express.static('../frontend/build'));
+app.use(express.static('./build'));
 
 morgan.token('body', (req) => {
-  return JSON.stringify(req.body);
+  if (req.method === 'POST') return JSON.stringify(req.body);
 });
 
 app.use(
-  morgan('tiny', {
-    skip: (req) => req.method === 'POST',
-  })
-);
-
-app.use(
-  morgan(
-    ':method :url :status :res[content-length] - :response-time ms :body',
-    {
-      skip: (req) => req.method !== 'POST',
-    }
-  )
+  morgan(':method :url :status :res[content-length] - :response-time ms :body')
 );
 
 // GET
